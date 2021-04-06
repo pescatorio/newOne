@@ -5,15 +5,21 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 <!-- hikari -->
-<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+<bean id="config" class="com.zaxxer.hikari.HikariConfig">
 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 	<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
 	<property name="username" value="jweb"></property>
 	<property name="password" value="4321">	</property>
 </bean>
+
+
 <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-  	<constructor-arg ref="hikariConfig"></constructor-arg>
+  	<constructor-arg ref="config"></constructor-arg>
 </bean>
 
+<!-- <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+<property name="dataSource" ref="dataSource"/>
+</bean>
+<mybatis-spring:scan base-package="jmp.spring.ex01.mapper"/> -->
 		
 </beans>

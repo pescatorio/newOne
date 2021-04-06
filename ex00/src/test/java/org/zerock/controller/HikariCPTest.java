@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-/* @Log4j */
+@Log4j
 public class HikariCPTest {
 	
 	@Autowired
@@ -23,13 +23,15 @@ public class HikariCPTest {
 	
 	@Test
 	public void test() {
-		Connection conn=null;
+		Connection con=null;
 		try {
-			conn=dataSource.getConnection();
-			System.out.println(conn);
-			conn.close();
+			con=dataSource.getConnection();
+			System.out.println(con);
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			
 		}
 	}
 	
